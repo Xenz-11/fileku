@@ -1,0 +1,167 @@
+# !/usr/bin/env python3
+# CODING BY : UTF-8
+import os,requests,json,time,re,random
+
+P = '\x1b[1;97m' # PUTIH
+M = '\x1b[1;91m' # MERAH
+H = '\x1b[1;92m' # HIJAU
+K = '\x1b[1;93m' # KUNING
+O = '\033[38;2;255;127;0;1m' # ORANGE
+
+ti = (f'{H}[{P}•{H}]{P} ')
+pl = (f'{H}[{P}+{H}]{P} ')
+er = (f'{H}[{M}!{H}]{P} ')
+
+
+banner = (f'''{M}     ██████{P}╗ {M}██████{P}╗ {M}███{P}╗   {M}██{P}╗{M}██{P}╗   {M}██{P}╗{M}███████{P}╗{M}██████{P}╗ {M}████████{P}╗
+{M}    ██{P}╔════╝{M}██{P}╔═══{M}██{P}╗{M}████{P}╗  {M}██{P}║{M}██{P}║   {M}██{P}║{M}██{P}╔════╝{M}██{P}╔══{M}██{P}╗╚══{M}██{P}╔══╝
+{M}    ██{P}║     {M}██{P}║   {M}██{P}║{M}██{P}╔{M}██{P}╗ {M}██{P}║{M}██{P}║   {M}██{P}║{M}█████{P}╗  {M}██████{P}╔╝   {M}██{P}║
+{M}    ██{P}║     {M}██{P}║   {M}██{P}║{M}██{P}║╚{M}██{P}╗{M}██{P}║╚{M}██{P}╗ {M}██{P}╔╝{M}██{P}╔══╝  {M}██{P}╔══{M}██{P}╗   {M}██{P}║
+{P}    ╚{M}██████{P}╗╚{M}██████{P}╔╝{M}██{P}║ ╚{M}████{P}║ ╚{M}████{P}╔╝ {M}███████{P}╗{M}██{P}║  {M}██{P}║   {M}██{P}║
+{P}     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝   ╚═╝
+
+''')
+
+menu = (f'''
+{H}[{P}01{H}] {P}CONVERT TOKEN EAAB
+{H}[{P}02{H}] {P}CONVERT TOKEN EAAI
+{H}[{P}03{H}] {P}CONVERT TOKEN EAAG
+{H}[{P}04{H}] {P}CARA MENGGUNAKAN
+{H}[{P}05{H}] {P}INFO
+{H}[{P}00{H}] {M}EXIT
+''')
+
+bio = (f'''
+{M}•{K}•{H}•
+	{H}WELLCOME TO MY TOOLS
+
+  {O}AUTHOR {P}: {O}XENZ
+  {O}GITHUB {P}: {O}https://github.com/Xenz-11
+  {O}TEAM   {P}: {O}SPY CYBER TEAM
+  {O}FRIEND {P}: {K}MR.ADIM | MR.DHENZ | MR.SPL
+''')
+
+class mulai:
+	def list(self):
+		try:
+			os.system('clear')
+			print (banner, menu)
+			con = input (f'{pl}CHOOSE : {H}')
+			if con in ['1','01']:
+				cookie = input (f'\n\n{pl}MASUKAN COOKIE : {H}')
+				if 'c_user=' in str(cookie):
+					self.eaab(cookie)
+
+			if con in ['2','02']:
+				cookie = input (f'\n\n{pl}MASUKAN COOKIE : {H}')
+				if 'c_user=' in str(cookie):
+					self.eaai(cookie)
+
+			if con in ['3','03']:
+				cookie = input (f'\n\n{pl}MASUKAN COOKIE : {H}')
+				if 'c_user=' in str(cookie):
+					self.eaag(cookie)
+			if con in ['4','04']:
+				self.cara()
+			if con in ['5','05']:
+				self.info()
+			if con in ['0','00']:
+				print (f'{ti}THANKS FOR USING MY TOOLS')
+				exit()
+			else:
+				print (f'{er}PILIHAN TIDAK TERSEDIA')
+		except:
+			exit()
+
+	def eaab(self, cookie):
+		try:
+			with requests.Session() as ses:
+				headers = {
+					'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36',
+					'Cookie': cookie
+				}
+				url = ses.get('https://web.facebook.com/ads/manager/account_settings/account_billing/?_rdc=1&_rdr', headers = headers)
+				cari = re.findall('(EAAI\w+)', url.text)
+				if len(cari) == 0:
+					print (f'\n{er}TOKEN TIDAK DITEMUKAN ATAU COOKIE RUSAK')
+					exit()
+				else:
+					for token in cari:
+						print (f'\n\n{ti}YOUR TOKEN : {H}{token}')
+						exit()
+		except Exception as eror:
+			print (f'{er}{eror}')
+			exit()
+
+
+	def eaai(self, cookie):
+		try:
+			with requests.Session() as ses:
+				headers = {
+					'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36',
+					'Cookie': cookie
+				}
+				url = ses.get('https://web.facebook.com/adsmanager?_rdc=1&_rdr', headers = headers)
+				cari = re.findall('act=(.*?)&nav_source', url.text)
+				if len(cari) == 0:
+					print (f'\n{er}TOKEN TIDAK DITEMUKAN ATAU COOKIE RUSAK')
+					exit()
+				else:
+					for xenz in cari:
+						web = ses.get(f'https://web.facebook.com/adsmanager/manage/campaigns?act={xenz}&nav_source=no_referrer', headers = headers)
+						token = re.search('(EAAB\w+)', web.text).group(1)
+						print (f'\n\n{ti}YOUR TOKEN : {H}{token}')
+						exit()
+		except Exception as eror:
+			print (f'{er}{eror}')
+			exit()
+
+	def eaag(self, cookie):
+		try:
+			with requests.Session() as ses:
+				headers = {
+					'User-Agent': 'Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36',
+					'Cookie': cookie
+				}
+				url = ses.get('https://business.facebook.com/business_locations',headers=headers)
+				token = re.search("(EAAG\w+)",url.text).group(1)
+				print (f'\n\n{ti}YOUR TOKEN : {H}{token}')
+				exit()
+
+		except Exception as eror:
+			print (f'{er}{eror}')
+			exit()
+
+	def cara(self):
+		os.system('clear')
+		print (banner)
+		print (f'''
+{P}Buka {H}kiwi browser {P}download dulu di playstore kalo gak punya
+Ketik {H}chrome web store {P}di {H}kiwi browser
+{P}Kalo sudah pergi ke kolom pencarian ketik {H}cookiedough
+{P}Lalu {H}tambahkan ke chrome
+{P}Kalo sudah login ke facebook yg ingin diambil cookienya
+{P}Tekan {H}titik tiga di pojok kanan atas
+{P}Scroll kebawah cari ekstensi yg namanya {H}cookiedough
+{P}Kalo sudsh {H}copy {P}cookienya
+''')
+
+		bck = input (f'\n{pl}PAHAM GAK? Y/t : {H}')
+		if bck in ['y','Y']:
+			print (f'{ti}PINTER ^_^')
+			exit()
+		if bck in ['t','T']:
+			print (f'{er}TULUL:V')
+			os.system('xdg-open https://youtube.com/channel/UCI3Dmc-RzRC6V-jJ0YWpC3g')
+			exit()
+		else:
+			os.system('xdg-open https://www.xnxx.com')
+	def info(self):
+		os.system('clear')
+		print (banner,bio)
+		bck = input ('')
+		self.list()
+
+
+if __name__=='__main__':
+	mulai().list()
