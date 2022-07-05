@@ -1,0 +1,25 @@
+#CODING BY : UTF-8
+import marshal, os
+
+try:
+	os.system('clear')
+	a=input("  [+] MASUKAN FILE : ")
+	x=open(a).read()
+	b=compile(x,"","exec")
+	c=marshal.dumps(b)
+	d=open("enc-"+a,"w")
+	d.write("#CODING BY : UTF-8\n")
+	d.write("import marshal\n\n")
+	d.write("#=========================================#\n")
+	d.write("# Hayo Mau Recode Ya\n")
+	d.write("# Encrypt By Namamu\n")
+	d.write("# https://github.com/nama githubmu\n")
+	d.write("#=========================================#\n")
+	d.write("exec(marshal.loads("+repr(c)+"))")
+	d.close()
+	print ('  [>] BERHASIL ENCRYPT : enc-'+a)
+	print ()
+except FileNotFoundError:
+	print ("  [x] FILE TIDAK TERSEDIA\n")
+except KeyboardInterrupt:
+	exit()
