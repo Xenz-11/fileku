@@ -1,6 +1,11 @@
-#CODING BY : UTF-8
-import marshal, os
+# Cara menggunakanya
+# Buka termux
+# Ketik nano enc.py lalu enter
+# Copy code di bawah ini
 
+
+
+import marshal, os
 try:
 	os.system('clear')
 	a=input("  [+] MASUKAN FILE : ")
@@ -23,3 +28,10 @@ except FileNotFoundError:
 	print ("  [x] FILE TIDAK TERSEDIA\n")
 except KeyboardInterrupt:
 	exit()
+
+# lalu paste ditermux
+# lalu ketik ctrl x y lalu enter
+# jalankan scritnya dengan cara
+# ketik python enc.py
+# masukan nama file yg akan diencrypt lalu enter
+# dah jadi:v
